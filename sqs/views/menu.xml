@@ -1,0 +1,12 @@
+<odoo>
+    <menuitem id="menu_sqs_root" name="SQS" sequence="5" />
+
+    <menuitem id="menu_sqs_connector" name="Connectors" parent="menu_sqs_root"
+        action="action_sqs_connector" sequence="1" />
+
+    <menuitem id="menu_sqs_queue" name="Queues" parent="menu_sqs_root"
+        action="action_sqs_queue" sequence="2" />
+
+    <menuitem id="menu_sqs_message" name="Messages" parent="menu_sqs_root"
+        action="action_sqs_message" sequence="3" />
+</odoo>

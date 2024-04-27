@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sqs_connector_manager,sqs.connector manager,model_sqs_connector,base.group_user,1,1,1,1
+access_sqs_queue_manager,sqs.queue manager,model_sqs_queue,base.group_user,1,1,1,1
+access_sqs_message,sqs.message manager,model_sqs_message,base.group_user,1,1,1,1

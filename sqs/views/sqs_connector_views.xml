@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="sqs_connector_form_view" model="ir.ui.view">
+        <field name="name">sqs.connector.form.view</field>
+        <field name="model">sqs.connector</field>
+        <field name="arch" type="xml">
+            <form string="SQS Connector">
+                <header>
+                    <button string="Test Connection" name="test_connection" type="object"
+                        class="btn-primary" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="access_key_id" />
+                        <field name="secret_access_key" password="1" />
+                        <field name="region_name" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sqs_connector_tree_view" model="ir.ui.view">
+        <field name="name">sqs.connector.tree.view</field>
+        <field name="model">sqs.connector</field>
+        <field name="arch" type="xml">
+            <tree string="SQS Connectors">
+                <field name="name" />
+                <field name="region_name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_sqs_connector" model="ir.actions.act_window">
+        <field name="name">SQS Connectors</field>
+        <field name="res_model">sqs.connector</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

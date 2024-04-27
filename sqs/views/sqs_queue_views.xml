@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sqs_queue_form_view" model="ir.ui.view">
+        <field name="name">sqs.queue.form.view</field>
+        <field name="model">sqs.queue</field>
+        <field name="arch" type="xml">
+            <form string="SQS Queue">
+                <header>
+                    <button name="pull_from_sqs" string="Pull" type="object" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="queue_url" />
+                        <field name="connector_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sqs_queue_tree_view" model="ir.ui.view">
+        <field name="name">sqs.queue.tree.view</field>
+        <field name="model">sqs.queue</field>
+        <field name="arch" type="xml">
+            <tree string="SQS Queues">
+                <field name="name" />
+                <field name="queue_url" />
+                <field name="connector_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_sqs_queue" model="ir.actions.act_window">
+        <field name="name">SQS Queues</field>
+        <field name="res_model">sqs.queue</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
