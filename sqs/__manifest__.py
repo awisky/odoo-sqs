@@ -12,9 +12,7 @@
     'category': 'Generic Modules',
     'version': '16.0.1.0',
     'license': 'AGPL-3',
-    'depends': [
-        'mountrix'
-    ],
+    'depends': [],
     "external_dependencies": {"python": ["boto3"]},
     'data': [
         'security/ir.model.access.csv',
