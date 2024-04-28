@@ -45,3 +45,4 @@ Contributors
 ~~~~~~~~~~~~
 
 * Agustin Wisky <agustin.wisky@mountrix.com>
+* Reinaldo Menéndez <rejamen@gmail.com>

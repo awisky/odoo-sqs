@@ -7,14 +7,28 @@
         <field name="arch" type="xml">
             <form string="SQS Queue">
                 <header>
-                    <button name="pull_from_sqs" string="Pull" type="object" />
+                    <button name="pull_from_sqs" string="Get Messages" type="object" icon="fa-inbox"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_messages" type="object" icon="fa-envelope-o">
+                            <field string="Messages" name="message_count" widget="statinfo"/>
+                        </button>
+                    </div>
                     <group>
-                        <field name="name" />
-                        <field name="queue_url" />
-                        <field name="connector_id" />
+                        <group name="queue_settings" string="Settings">
+                            <field name="name" />
+                            <field name="queue_url" />
+                            <field name="connector_id" />
+                        </group>
+                        <group name="message_pull_settings" string="Receiving Settings">
+                            <field name="wait_time_seconds" />
+                            <field name="max_number_of_messages" />
+                        </group>
                     </group>
+                    <label for="message_body" string="Send a Message" />
+                    <field name="message_body" nolabel="1" placeholder="add the message content here..."/>
+                    <button name="action_send_message" string="Send" type="object" icon="fa-paper-plane"/>
                 </sheet>
             </form>
         </field>

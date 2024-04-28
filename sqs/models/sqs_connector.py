@@ -10,11 +10,14 @@ class SQSConnector(models.Model):
     _name = 'sqs.connector'
     _description = 'Connector for AWS SQS'
 
-    name = fields.Char(string='Name',
-                       help='Descriptive name for the connector')
-    access_key_id = fields.Char(string='AWS Access Key ID')
-    secret_access_key = fields.Char(string='AWS Secret Access Key')
-    region_name = fields.Char(string='AWS Region')
+    name = fields.Char(
+        string='Name',
+        help='Descriptive name for the connector',
+        required=True,
+    )
+    access_key_id = fields.Char(string='AWS Access Key ID', required=True)
+    secret_access_key = fields.Char(string='AWS Secret Access Key', required=True)
+    region_name = fields.Char(string='AWS Region', required=True)
 
     def get_sqs_client(self):
         """
@@ -35,7 +38,8 @@ class SQSConnector(models.Model):
             response = client.list_queues()
             queues = response.get('QueueUrls', [])
             existing_queues = self.env['sqs.queue'].search(
-                []).mapped('queue_url')
+                []
+            ).mapped('queue_url')
             new_queues = []
 
             for queue_url in queues:
@@ -52,8 +56,12 @@ class SQSConnector(models.Model):
                     new_queues.append(new_queue.name)
 
             message = _(
-                'Connection successful! Found %s queues. New queues created: %s'
-                % (len(queues), ", ".join(new_queues)))
+                'Connection successful! Found %s queues. ' % (len(queues))
+            )
+            if new_queues:
+                message += _(
+                    'Created new queues: %s' % (', '.join(new_queues))
+                )
 
             return {
                 'type': 'ir.actions.client',

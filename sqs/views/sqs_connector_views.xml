@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <form string="SQS Connector">
                 <header>
-                    <button string="Test Connection" name="test_connection" type="object"
+                    <button string="Get Queues" name="test_connection" type="object"
                         class="btn-primary" />
                 </header>
                 <sheet>

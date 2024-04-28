@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
@@ -14,6 +14,7 @@ class SQSMessage(models.Model):
     message_id = fields.Char(string='Message ID',
                              required=True,
                              help="The ID of the message from SQS")
+    receipt_handle = fields.Char()
     queue_id = fields.Many2one(
         'sqs.queue',
         string='Queue',
@@ -30,9 +31,13 @@ class SQSMessage(models.Model):
         """ Process the SQS message according to your business logic """
         self.ensure_one()
         try:
-            # processing logic, replace with actual processing code
+            # delete message from SQS
+            client = self.queue_id.connector_id.get_sqs_client()
+            client.delete_message(
+                QueueUrl=self.queue_id.queue_url,
+                ReceiptHandle=self.receipt_handle
+            )
             self.state = 'done'
         except Exception as e:
             self.state = 'error'
-            self.error_description = str(e)
             raise UserError(_('Error processing the message: %s') % e)
