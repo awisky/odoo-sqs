@@ -1,5 +1,5 @@
 <odoo>
-    <menuitem id="menu_sqs_root" name="SQS" sequence="5" />
+    <menuitem id="menu_sqs_root" name="SQS" sequence="5" web_icon="sqs,static/description/sqs_menu_icon.png"/>
 
     <menuitem id="menu_sqs_connector" name="Connectors" parent="menu_sqs_root"
         action="action_sqs_connector" sequence="1" />

@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <form string="SQS message">
                 <header>
+                    <button name="process_message" type="object" string="Process message" invisible="state == 'done'" class="oe_highlight" confirm="This action will delete the message from the AWS SQS. Do you want to proceed?"/>
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>

@@ -3,14 +3,15 @@
 {
     'name': "Mountrix SQS",
     'summary': """
-        Mountrix SQS""",
+        Mountrix SQS
+    """,
     'description': """
         Mountrix SQS Connector
     """,
     'author': "Agustin Wisky <agustin.wisky@mountrix.com>",
     'website': "https://mountrix.com",
     'category': 'Generic Modules',
-    'version': '16.0.1.0',
+    'version': '1.0',
     'license': 'AGPL-3',
     'depends': [],
     "external_dependencies": {"python": ["boto3"]},
